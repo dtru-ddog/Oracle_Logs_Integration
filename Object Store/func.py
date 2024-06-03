@@ -8,7 +8,7 @@ import oci
 import requests
 
 
-def handler(ctx, data: io.BytesIO = None):
+def handler(ctx, data: io.BytesIO = None) -> None:
     try:
         body = json.loads(data.getvalue())
     except (Exception, ValueError) as ex:
@@ -73,7 +73,7 @@ def handler(ctx, data: io.BytesIO = None):
     logging.getLogger().info(req.text)
 
 
-def request_one_object(namespace: str, bucket: str, resource_name: str):
+def request_one_object(namespace: str, bucket: str, resource_name: str) -> bytes:
     """
     Calls OCI to request object from Object Storage Client and decompress
     """

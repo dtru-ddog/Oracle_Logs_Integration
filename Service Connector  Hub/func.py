@@ -6,7 +6,7 @@ import logging
 import requests
 
 
-def process(body: dict):
+def process(body: dict) -> None:
     data = body.get("data", {})
     source = body.get("source")
     time = body.get("time")
@@ -46,7 +46,7 @@ def process(body: dict):
         logging.getLogger().error(str(ex))
 
 
-def handler(ctx, data: io.BytesIO = None):
+def handler(ctx, data: io.BytesIO = None) -> None:
     """
     This function receives the logging json and invokes the Datadog endpoint
     for ingesting logs. https://docs.cloud.oracle.com/en-us/iaas/Content/Logging/Reference/top_level_logging_format.htm#top_level_logging_format
